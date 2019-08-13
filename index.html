@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dope Wars 2019</title>
+    <link rel="stylesheet" href="my.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Header for dropdown menu and quick stats -->
+        <!-- NOTES -->
+        <!-- Drugs:
+                Weed = Green
+                Cocaine = White
+                LSD = Yellow
+                MDMA = Pink
+                Mushrooms = Brown
+                Meth = Grey
+                Heroin = Beige -->
+        <div class="header">
+            <div>
+                <h2 class="moneyOnHand">Money: $100</h2>
+            </div>
+            <div>
+                <h2><span class="timeDisplay"></span></h2>
+            </div>
+        </div>
+        <!-- Container has left menu to buy/sell drugs and travel between cities.  Right area will be a sort of map of the city showing the player where they are. -->
+        <div class="container">
+            <div class="menu">
+                <div class="drugList">
+                    <h2 class="drugTitle">DRUGS</h2>
+                    <div class="drug weedStyles">
+                        <button class="buyWeed">BUY<br><span>$10</span></button>
+                        <span class="weedInv">Weed: 0</span>
+                        <button class="sellWeed">SELL<br><span>$10</span></button>
+                    </div>
+                    <div class="drug cocaineStyles">
+                        <button class="buyCocaine">BUY<br><span>$10</span></button>
+                        <span class="cocaineInv">Cocaine: 0</span>
+                        <button class="sellCocaine">SELL<br><span>$10</span></button>
+                    </div>
+                    <div class="drug mdmaStyles">
+                        <button class="buyMdma">BUY<br><span>$10</span></button>
+                        <span class="mdmaInv">MDMA: 0</span>
+                        <button class="sellMdma">SELL<br><span>$10</span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <h2 class="locationTitle">LOCATION</h2>
+                <span class="locationName">Name:</span>
+                <span class="endgameStats"></span>
+                <!-- <span class="locationPolice">Police: 30%</span> -->
+                <!-- <span class="locationNews">News: Police increase presence as -DRUG- sales spike</span> -->
+                <div>
+                    <h2 class="travelTitle">TRAVEL</h2>
+                    <div class="travelButtons"></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            Version 1.0
+        </div>
+    </div>
+
+
+
+
+
+    <script src="my.js"></script>
+</body>
+</html>
+
