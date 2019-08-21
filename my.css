@@ -25,12 +25,23 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .restartGame {
   margin: 0.25rem;
   height: 2.5rem;
   font-size: 1.25rem;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 .menu {
@@ -93,6 +104,22 @@ body {
 
 .mdmaStyles {
   background: pink;
+}
+
+.lsdStyles {
+  background: yellow;
+}
+
+.heroinStyles {
+  background: beige;
+}
+
+.methStyles {
+  background: #c8c8c8;
+}
+
+.mushroomStyles {
+  background: rgba(180, 148, 99, 0.76);
 }
 
 .buyDrug {

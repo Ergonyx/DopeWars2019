@@ -1,12 +1,359 @@
+let gameData = {
+    playerData : { // This is all the information relating to the players inventory and stats.
+        playerName : "Bob", // Players name.  Have to figure out how the player will enter this.
+        playerLocation : "0", // Players current location
+        playerInventory : {  // Players inventory containing all the drugs in their posession.  Maybe add other things like guns and stuff later.
+            moneyOnHand : 100,
+            weedCount : 0,
+            cocaineCount : 0,
+            mdmaCount : 0,
+            lsdCount : 0,
+            heroinCount : 0,
+            methCount : 0,
+            mushroomCount : 0
+        },
+        playerStats : {  // Just some stats to track and put on the screen when the player finishes a playthrough of the game.
+            drugsSold : {  // This area will track how many of each drug the player sold.
+                weedSold : 0,
+                cocaineSold : 0,
+                mdmaSold : 0,
+                lsdSold : 0,
+                heroinSold : 0,
+                methSold : 0,
+                mushroomSold : 0
+            },
+            moneySpentOn : { // How much money the player spent on each drug type.
+                weedMoneySpent : 0,
+                cocaineMoneySpent : 0,
+                mdmaMoneySpent : 0,
+                lsdMoneySpent : 0,
+                heroinMoneySpent : 0,
+                methMoneySpent : 0,
+                mushroomMoneySpent : 0
+            },
+            moneyMadeFrom : { // How much money the player made selling each drug type.
+                weedMoneyMade : 0,
+                cocaineMoneyMade : 0,
+                mdmaMoneyMade : 0,
+                lsdMoneyMade : 0,
+                heroinMoneyMade : 0,
+                methMoneyMade : 0,
+                mushroomMoneyMade : 0
+            },
+            profitFrom : { // How much profit was made with each drug.
+                weedProfit : 0,
+                cocaineProfit : 0,
+                mdmaProfit : 0,
+                lsdProfit : 0,
+                heroinProfit : 0,
+                methProfit : 0,
+                mushroomProfit : 0
+            }
+        }
+    },
+    locationData : {
+        "Sacramento" : {
+            locationName : "Sacramento", // Location name without any spaces.
+            id : 0,
+            locationValues : {
+                policePresence : 30,
+                crimeRate : 20
+            },
+            drugValues : { // These are the values of the drugs that change every game day.
+                weedValue : 0,
+                cocaineValue : 0,
+                mdmaValue : 0,
+                lsdValue : 0,
+                heroinValue : 0,
+                methValue : 0,
+                mushroomValue : 0
+            },
+            drugSupply : { // This will change based on how much the player buys/sells in each location.
+                weedSupply : 100,
+                cocaineSupply : 100,
+                mdmaSupply : 100,
+                lsdSupply : 100,
+                heroinSupply : 100,
+                methSupply : 100,
+                mushroomSupply : 100
+            }
+        },
+        "San Francisco" : {
+            locationName : "SanFrancisco", // Location name without any spaces.
+            id : 1,
+            locationValues : {
+                policePresence : 30,
+                crimeRate : 20
+            },
+            drugValues : { // These are the values of the drugs that change every game day.
+                weedValue : 0,
+                cocaineValue : 0,
+                mdmaValue : 0,
+                lsdValue : 0,
+                heroinValue : 0,
+                methValue : 0,
+                mushroomValue : 0
+            },
+            drugSupply : { // This will change based on how much the player buys/sells in each location.
+                weedSupply : 100,
+                cocaineSupply : 100,
+                mdmaSupply : 100,
+                lsdSupply : 100,
+                heroinSupply : 100,
+                methSupply : 100,
+                mushroomSupply : 100
+            }
+        }
+    },
+    locationData2 : [
+        {
+            locationName : "Sacramento",
+            id : 0,
+            locationValues : {
+                policePresence : 30,
+                crimeRate : 20
+            },
+            drugValues : { // These are the values of the drugs that change every game day.
+                weedValue : 0,
+                cocaineValue : 0,
+                mdmaValue : 0,
+                lsdValue : 0,
+                heroinValue : 0,
+                methValue : 0,
+                mushroomValue : 0
+            },
+            drugSupply : { // This will change based on how much the player buys/sells in each location.
+                weedSupply : 100,
+                cocaineSupply : 100,
+                mdmaSupply : 100,
+                lsdSupply : 100,
+                heroinSupply : 100,
+                methSupply : 100,
+                mushroomSupply : 100
+            }
+        },
+        {
+            locationName : "San Francisco",
+            id : 1,
+            locationValues : {
+                policePresence : 30,
+                crimeRate : 20
+            },
+            drugValues : { // These are the values of the drugs that change every game day.
+                weedValue : 0,
+                cocaineValue : 0,
+                mdmaValue : 0,
+                lsdValue : 0,
+                heroinValue : 0,
+                methValue : 0,
+                mushroomValue : 0
+            },
+            drugSupply : { // This will change based on how much the player buys/sells in each location.
+                weedSupply : 100,
+                cocaineSupply : 100,
+                mdmaSupply : 100,
+                lsdSupply : 100,
+                heroinSupply : 100,
+                methSupply : 100,
+                mushroomSupply : 100
+            }
+        },
+        {
+            locationName : "San Jose",
+            id : 2,
+            locationValues : {
+                policePresence : 30,
+                crimeRate : 20
+            },
+            drugValues : { // These are the values of the drugs that change every game day.
+                weedValue : 0,
+                cocaineValue : 0,
+                mdmaValue : 0,
+                lsdValue : 0,
+                heroinValue : 0,
+                methValue : 0,
+                mushroomValue : 0
+            },
+            drugSupply : { // This will change based on how much the player buys/sells in each location.
+                weedSupply : 100,
+                cocaineSupply : 100,
+                mdmaSupply : 100,
+                lsdSupply : 100,
+                heroinSupply : 100,
+                methSupply : 100,
+                mushroomSupply : 100
+            }
+        },
+        {
+            locationName : "Seattle",
+            id : 3,
+            locationValues : {
+                policePresence : 30,
+                crimeRate : 20
+            },
+            drugValues : { // These are the values of the drugs that change every game day.
+                weedValue : 0,
+                cocaineValue : 0,
+                mdmaValue : 0,
+                lsdValue : 0,
+                heroinValue : 0,
+                methValue : 0,
+                mushroomValue : 0
+            },
+            drugSupply : { // This will change based on how much the player buys/sells in each location.
+                weedSupply : 100,
+                cocaineSupply : 100,
+                mdmaSupply : 100,
+                lsdSupply : 100,
+                heroinSupply : 100,
+                methSupply : 100,
+                mushroomSupply : 100
+            }
+        },
+        {
+            locationName : "Portland",
+            id : 4,
+            locationValues : {
+                policePresence : 30,
+                crimeRate : 20
+            },
+            drugValues : { // These are the values of the drugs that change every game day.
+                weedValue : 0,
+                cocaineValue : 0,
+                mdmaValue : 0,
+                lsdValue : 0,
+                heroinValue : 0,
+                methValue : 0,
+                mushroomValue : 0
+            },
+            drugSupply : { // This will change based on how much the player buys/sells in each location.
+                weedSupply : 100,
+                cocaineSupply : 100,
+                mdmaSupply : 100,
+                lsdSupply : 100,
+                heroinSupply : 100,
+                methSupply : 100,
+                mushroomSupply : 100
+            }
+        },
+        {
+            locationName : "Los Angeles",
+            id : 5,
+            locationValues : {
+                policePresence : 30,
+                crimeRate : 20
+            },
+            drugValues : { // These are the values of the drugs that change every game day.
+                weedValue : 0,
+                cocaineValue : 0,
+                mdmaValue : 0,
+                lsdValue : 0,
+                heroinValue : 0,
+                methValue : 0,
+                mushroomValue : 0
+            },
+            drugSupply : { // This will change based on how much the player buys/sells in each location.
+                weedSupply : 100,
+                cocaineSupply : 100,
+                mdmaSupply : 100,
+                lsdSupply : 100,
+                heroinSupply : 100,
+                methSupply : 100,
+                mushroomSupply : 100
+            }
+        },
+        {
+            locationName : "San Diego",
+            id : 6,
+            locationValues : {
+                policePresence : 30,
+                crimeRate : 20
+            },
+            drugValues : { // These are the values of the drugs that change every game day.
+                weedValue : 0,
+                cocaineValue : 0,
+                mdmaValue : 0,
+                lsdValue : 0,
+                heroinValue : 0,
+                methValue : 0,
+                mushroomValue : 0
+            },
+            drugSupply : { // This will change based on how much the player buys/sells in each location.
+                weedSupply : 100,
+                cocaineSupply : 100,
+                mdmaSupply : 100,
+                lsdSupply : 100,
+                heroinSupply : 100,
+                methSupply : 100,
+                mushroomSupply : 100
+            }
+        }
+    ],
+    randomEvents : {
+        travelEvents : {
+            
+        },
+        buysellEvents : {
+            0 : {
+                
+            }
+        }
+    },
+    gameTime : {
+        minute : 0,
+        hour : 0,
+        day : 0
+    }
+};
+
 let gameMinute = 0;
 let gameHour = 0;
 let gameDay = 1;
-let timeMinute = 0;
-let timeHour = 0;
-let moneyOnHand = 100;
-let weedInv = 0;
-let cocaineInv = 0;
-let mdmaInv = 0;
+// SaveData = () => {
+//     const saveData = JSON.stringify(gameData);
+//     localStorage.setItem("savegame", saveData);
+// }
+function saveData() {
+    const saveData = JSON.stringify(gameData);
+    localStorage.setItem("savegame", saveData);
+    localStorage.setItem("gameMinute", gameMinute);
+    localStorage.setItem("gameHour", gameHour);
+    localStorage.setItem("gameDay", gameDay);
+}
+
+// LoadData = () => {
+//     const newData = localStorage.getItem("savegame");
+//     if (newData) { 
+//         gameData = JSON.parse(newData);
+//     } else {
+//         let gameMinute = 0;
+//         let gameHour = 0;
+//         let gameDay = 1;
+//     }
+// }
+
+function loadData() {
+    const newData = localStorage.getItem("savegame");
+    if (newData) {
+        gameData = JSON.parse(newData);
+        document.querySelector(".timeDisplay").textContent = `Day: 1 Time: 00:00`;
+        document.querySelector(".moneyOnHand").textContent = `Money: $${gameData.playerData.playerInventory.moneyOnHand}`
+        gameMinute = localStorage.getItem("gameMinute");
+        gameHour = localStorage.getItem("gameHour");
+        gameDay = localStorage.getItem("gameDay");
+        updateDrugInventory();
+        updateDrugValues();
+        makeTravelMenu();
+    } else {
+        changeDrugValues();
+        testStartingLocation();
+        makeTravelMenu();
+        updateDrugValues();
+    }
+}
+loadData();
+document.querySelector(".timeDisplay").textContent = `Day: 1 Time: 00:00`;
+document.querySelector(".moneyOnHand").textContent = `Money: $${gameData.playerData.playerInventory.moneyOnHand}`
 
 // Start time rolling.  One second = one minute in game.  One game day is 24 minutes.
 // endDay = setInterval(increaseTime, 1000); // DEFAULT: 24 minute days.
@@ -14,232 +361,138 @@ endDay = setInterval(increaseTime, 104); // OPTIONAL: 2.5 minute days.
 // endDay = setInterval(increaseTime, 208); // OPTIONAL: 5 minute days.
 // endDay = setInterval(increaseTime, 416); // OPTIONAL: 10 minute days.
 
-
-document.querySelector(".timeDisplay").textContent = `Day: 1 Time: 00:00`;
-
-let locations = [{location : "Sacramento"}, {location : "San Francisco"}, {location : "San Jose"}, {location : "Seattle"},{location : "Portland"}, {location : "Los Angeles"}, {location : "San Diego"}];
-
-function setDrugValues() {
-    i = 0;
-    locations.forEach(element => {
-        // Random Drug Value assigned at beginning of game.
-        // Math.floor(Math.random() * (MAX - min) + min)
-        element.id = i;
-        i++;
-        element.name = element.location.replace(/ /g, '');
-        element.weed = Math.floor(Math.random() * (15 - 5) + 5);
-        element.cocaine = Math.floor(Math.random() * (100 - 60) + 60);
-        element.mdma = Math.floor(Math.random() * (130 - 80) + 80);
+// If no save data is present, set inital randomized drug values.
+function changeDrugValues() {
+    arg1 = gameData.locationData2;
+    arg1.forEach(element => {
+        element.drugValues.weedValue = Math.floor(Math.random() * (16 - 5) + 5);
+        element.drugValues.cocaineValue = Math.floor(Math.random() * (101 - 60) + 60);
+        element.drugValues.mdmaValue = Math.floor(Math.random() * (131 - 80) + 80);
+        element.drugValues.lsdValue = Math.floor(Math.random() * (101 - 25) + 25);
+        element.drugValues.heroinValue = Math.floor(Math.random() * (201 - 100) + 100);
+        element.drugValues.methValue = Math.floor(Math.random() * (161 - 80) + 80);
+        element.drugValues.mushroomValue = Math.floor(Math.random() * (101 - 20) + 20);
     });
 }
-setDrugValues();
+// changeDrugValues();
 
-let currentLocationID = locations[Math.floor(Math.random() * (6 - 0) + 0)].id;
-function setStartingLocation() {
-    // Set starting city for player.
-    updateLocationData();
-}
-setStartingLocation();
-
-function updateLocationData() {
-    document.querySelector(".locationName").innerHTML = `<strong>Name: </strong>${locations[currentLocationID].location}`;
-    document.querySelector(".buyWeed").innerHTML = `BUY<br><span>$${locations[currentLocationID].weed}</span>`;
-    document.querySelector(".sellWeed").innerHTML = `SELL<br><span>$${locations[currentLocationID].weed}</span>`;
-    document.querySelector(".buyCocaine").innerHTML = `BUY<br><span>$${locations[currentLocationID].cocaine}</span>`;
-    document.querySelector(".sellCocaine").innerHTML = `SELL<br><span>$${locations[currentLocationID].cocaine}</span>`;
-    document.querySelector(".buyMdma").innerHTML = `BUY<br><span>$${locations[currentLocationID].mdma}</span>`;
-    document.querySelector(".sellMdma").innerHTML = `SELL<br><span>$${locations[currentLocationID].mdma}</span>`;
-}
-
-// Create initial travel menu.
-function createTravelMenu() {
-    buttons = "";
-    locations.forEach(element => {
-        bug = element.location.replace(/ /g, '');
-        if (element.location != locations[currentLocationID].location) {
-            buttons += "<button class=\"travelButton tt-" + bug + "\">" + element.location + "</button><br>";
-        } else {
-            buttons += "<button class=\"travelButton tt-" + bug + "\" disabled = \"true\">" + element.location + "</button><br>";
+// If no save data is present, set players starting location on page load.
+function testStartingLocation() {
+    startingLocation = Math.floor(Math.random() * (7 - 0) + 0);
+    arg1 = gameData.locationData2;
+    arg1.forEach(element => {
+        if (element.id === startingLocation) {
+            gameData.playerData.playerLocation = element.id;
         }
     });
+    // document.querySelector(".locationName").innerHTML = `<strong>Name: </strong>${arg1[startingLocation].locationName}`;
+    updateDrugValues();
+}
+// testStartingLocation();
 
-    document.querySelector(".travelButtons").innerHTML = buttons;
-    locations.forEach(element => {
-        document.querySelector(`.tt-${element.name}`).addEventListener("click", function() {
-            travelTo(element.name);
+// Create and/or update travel menu as needed.
+function makeTravelMenu() {
+    playerLocation = gameData.playerData.playerLocation;
+    arg1 = gameData.locationData2;
+    travelMenu = '';
+    arg1.forEach(element => {
+        if (element.id === gameData.playerData.playerLocation) {
+            travelMenu += `<button class="tt-${arg1[playerLocation].locationName.replace(/ /g, '')} travelButton" disabled="true">${gameData.locationData2[playerLocation].locationName}</button><br>`;
+        } else {
+            travelMenu += `<button class="tt-${element.locationName.replace(/ /g, '')} travelButton">${element.locationName}</button><br>`;
+        }
+    });
+    document.querySelector(".travelButtons").innerHTML = travelMenu;
+    arg1.forEach(element => {
+        arg2 = element.locationName.replace(/ /g, '');
+        document.querySelector(`.tt-${arg2}`).addEventListener("click", function() {
+            arg2 = element.locationName.replace(/ /g, '');
+            travelToLocation(element.id);
         });
     });
 }
-createTravelMenu();
+makeTravelMenu();
 
-function travelTo(arg1) {
-    switch (arg1) {
-        case "Sacramento":
-            currentLocationID = 0;
-            updateLocationData();
-            createTravelMenu();
-            break;
-        case "SanFrancisco":
-            currentLocationID = 1;
-            updateLocationData();
-            createTravelMenu();
-            break;
-        case "SanJose":
-            currentLocationID = 2;
-            updateLocationData();
-            createTravelMenu();
-            break;
-        case "Seattle":
-            currentLocationID = 3;
-            updateLocationData();
-            createTravelMenu();
-            break;
-        case "Portland":
-            currentLocationID = 4;
-            updateLocationData();
-            createTravelMenu();
-            break;
-        case "LosAngeles":
-            currentLocationID = 5;
-            updateLocationData();
-            createTravelMenu();
-            break;
-        case "SanDiego":
-            currentLocationID = 6;
-            updateLocationData();
-            createTravelMenu();
-            break;
-    }
-    // gameDay++;
-}
-
-// Add event listener to buy buttons.
-document.querySelector(".buyWeed").addEventListener("click", function() {
-    buyDrug("buy", "weed");
-});
-document.querySelector(".buyCocaine").addEventListener("click", function() {
-    buyDrug("buy", "cocaine");
-});
-document.querySelector(".buyMdma").addEventListener("click", function() {
-    buyDrug("buy", "mdma");
-});
-
-// Add event listener to sell buttons.
-document.querySelector(".sellWeed").addEventListener("click", function() {
-    buyDrug("sell", "weed");
-});
-document.querySelector(".sellCocaine").addEventListener("click", function() {
-    buyDrug("sell", "cocaine");
-});
-document.querySelector(".sellMdma").addEventListener("click", function() {
-    buyDrug("sell", "mdma");
-});
-
-function buyDrug(arg1, arg2) {
-    if (arg1 === "buy") {
-        switch (arg2) {
-            case "weed":
-                weedPrice = locations[currentLocationID].weed;
-                if (moneyOnHand >= weedPrice) {
-                    moneyOnHand -= weedPrice;
-                    weedInv++
-                    // timeSkip();
-                    document.querySelector(".weedInv").textContent = `Weed: ${weedInv}`
-                    document.querySelector(".moneyOnHand").textContent = `Money: $${moneyOnHand}`
-                } else {
-                    console.log("You can't afford any more Weed!")
-                }
-                break;
-            case "cocaine":
-                cocainePrice = locations[currentLocationID].cocaine;
-                if (moneyOnHand >= cocainePrice) {
-                    moneyOnHand -= cocainePrice;
-                    cocaineInv++
-                    // timeSkip();
-                    document.querySelector(".cocaineInv").textContent = `Cocaine: ${cocaineInv}`
-                    document.querySelector(".moneyOnHand").textContent = `Money: $${moneyOnHand}`
-                } else {
-                    console.log("You can't afford any more Cocaine!");
-                }
-                break;
-            case "mdma":
-                mdmaPrice = locations[currentLocationID].mdma;
-                if (moneyOnHand >= mdmaPrice) {
-                    moneyOnHand -= mdmaPrice;
-                    mdmaInv++
-                    // timeSkip();
-                    document.querySelector(".mdmaInv").textContent = `MDMA: ${mdmaInv}`
-                    document.querySelector(".moneyOnHand").textContent = `Money: $${moneyOnHand}`
-                } else {
-                    console.log("You can't afford any more MDMA!");
-                }
-                break;
-        }
-    } else if (arg1 === "sell") {
-        switch (arg2) {
-            case "weed":
-                weedPrice = locations[currentLocationID].weed;
-                if (weedInv >= 1) {
-                    moneyOnHand += weedPrice;
-                    weedInv--
-                    // timeSkip();
-                    document.querySelector(".weedInv").textContent = `Weed: ${weedInv}`
-                    document.querySelector(".moneyOnHand").textContent = `Money: $${moneyOnHand}`
-                } else {
-                    console.log("You don't have any more weed to sell!")
-                }
-                break;
-            case "cocaine":
-                cocainePrice = locations[currentLocationID].cocaine;
-                if (cocaineInv >= 1) {
-                    moneyOnHand += cocainePrice;
-                    cocaineInv--
-                    // timeSkip();
-                    document.querySelector(".cocaineInv").textContent = `Cocaine: ${cocaineInv}`
-                    document.querySelector(".moneyOnHand").textContent = `Money: $${moneyOnHand}`
-                } else {
-                    console.log("You don't have any more cocaine to sell!")
-                }
-                break;
-            case "mdma":
-                mdmaPrice = locations[currentLocationID].mdma;
-                if (mdmaInv >= 1) {
-                    moneyOnHand += mdmaPrice;
-                    mdmaInv--
-                    // timeSkip();
-                    document.querySelector(".mdmaInv").textContent = `MDMA: ${mdmaInv}`
-                    document.querySelector(".moneyOnHand").textContent = `Money: $${moneyOnHand}`
-                } else {
-                    console.log("You don't have any more MDMA to sell!")
-                }
-                break;
-        }
-    } else {
-        console.log("You broke something.  Should probably fix that.");
+function buy(arg1) {
+    drugPrice = gameData.locationData2[gameData.playerData.playerLocation].drugValues[`${arg1}Value`];
+    drugOnHand = gameData.playerData.playerInventory[`${arg1}Count`];
+    moneyOnHand = gameData.playerData.playerInventory.moneyOnHand
+    if (drugPrice <= moneyOnHand) {
+        gameData.playerData.playerInventory.moneyOnHand -= drugPrice;
+        gameData.playerData.playerInventory[`${arg1}Count`] += 1;
+        document.querySelector(`.${arg1}Inv`).textContent = `${arg1}: ${gameData.playerData.playerInventory[`${arg1}Count`]}`
+        document.querySelector(".moneyOnHand").textContent = `Money: $${gameData.playerData.playerInventory.moneyOnHand}`
     }
 }
 
-function timeSkip() {
-    // Math.floor(Math.random() * (MAX - min) + min)
-    timeJump = Math.floor(Math.random() * (15 - 1) + 1);
-    gameMinute += timeJump;
+function sell(arg1) {
+    drugPrice = gameData.locationData2[gameData.playerData.playerLocation].drugValues[`${arg1}Value`];
+    drugOnHand = gameData.playerData.playerInventory[`${arg1}Count`];
+    if (drugOnHand > 0) {
+        gameData.playerData.playerInventory.moneyOnHand += drugPrice;
+        gameData.playerData.playerInventory[`${arg1}Count`] -= 1;
+        document.querySelector(`.${arg1}Inv`).textContent = `${arg1}: ${gameData.playerData.playerInventory[`${arg1}Count`]}`
+        document.querySelector(".moneyOnHand").textContent = `Money: $${gameData.playerData.playerInventory.moneyOnHand}`
+    }
+}
+
+function travelToLocation(arg1) {
+    gameData.playerData.playerLocation = arg1;
+    makeTravelMenu();
+    // console.log(gameData.locationData2[arg1].drugValues);
+    bookmark = gameData.locationData2[arg1].drugValues;
+    // document.querySelector(".locationName").innerHTML = `<strong>Name: </strong>${gameData.locationData2[arg1].locationName}`;
+    updateDrugValues();
+}
+
+function updateDrugValues() {
+    bookmark = gameData.locationData2[gameData.playerData.playerLocation].drugValues;
+    document.querySelector(".weedBuy").innerHTML = `BUY<br><span>$${bookmark.weedValue}</span>`;
+    document.querySelector(".weedSell").innerHTML = `SELL<br><span>$${bookmark.weedValue}</span>`;
+    document.querySelector(".cocaineBuy").innerHTML = `BUY<br><span>$${bookmark.cocaineValue}</span>`;
+    document.querySelector(".cocaineSell").innerHTML = `SELL<br><span>$${bookmark.cocaineValue}</span>`;
+    document.querySelector(".mdmaBuy").innerHTML = `BUY<br><span>$${bookmark.mdmaValue}</span>`;
+    document.querySelector(".mdmaSell").innerHTML = `SELL<br><span>$${bookmark.mdmaValue}</span>`;
+    document.querySelector(".lsdBuy").innerHTML = `BUY<br><span>$${bookmark.lsdValue}</span>`;
+    document.querySelector(".lsdSell").innerHTML = `SELL<br><span>$${bookmark.lsdValue}</span>`;
+    document.querySelector(".heroinBuy").innerHTML = `BUY<br><span>$${bookmark.heroinValue}</span>`;
+    document.querySelector(".heroinSell").innerHTML = `SELL<br><span>$${bookmark.heroinValue}</span>`;
+    document.querySelector(".methBuy").innerHTML = `BUY<br><span>$${bookmark.methValue}</span>`;
+    document.querySelector(".methSell").innerHTML = `SELL<br><span>$${bookmark.methValue}</span>`;
+    document.querySelector(".mushroomBuy").innerHTML = `BUY<br><span>$${bookmark.mushroomValue}</span>`;
+    document.querySelector(".mushroomSell").innerHTML = `SELL<br><span>$${bookmark.mushroomValue}</span>`;
+}
+
+function updateDrugInventory() {
+    document.querySelector(".weedInv").textContent = `Weed: ${gameData.playerData.playerInventory.weedCount}`
+    document.querySelector(".cocaineInv").textContent = `cocaine: ${gameData.playerData.playerInventory.cocaineCount}`
+    document.querySelector(".mdmaInv").textContent = `mdma: ${gameData.playerData.playerInventory.mdmaCount}`
+    document.querySelector(".lsdInv").textContent = `lsd: ${gameData.playerData.playerInventory.lsdCount}`
+    document.querySelector(".heroinInv").textContent = `heroin: ${gameData.playerData.playerInventory.heroinCount}`
+    document.querySelector(".methInv").textContent = `meth: ${gameData.playerData.playerInventory.methCount}`
+    document.querySelector(".mushroomInv").textContent = `mushroom: ${gameData.playerData.playerInventory.mushroomCount}`
 }
 
 function increaseTime() {
+    timeMinute = 0;
+    timeHour = 0;
     gameMinute++;  // Add a minute
 
     if (gameMinute >= 60) { // Increase gameHour when minutes hit 60.
         gameMinute = gameMinute - 60;
         gameHour++;
-        weedInv++;
-        document.querySelector(".weedInv").textContent = `Weed: ${weedInv}`
+        saveData();
+        // weedInv++;
+        // document.querySelector(".weedInv").textContent = `Weed: ${weedInv}`
     }
     timeMinute = convertTime(timeMinute, gameMinute); // Get formatted time.
 
     if (gameHour >= 24) { // Increase gameDay when hours hit 24.
         gameHour = 0;
         gameDay++;
-        doDailyMath();
+        saveData();
+        changeDrugValues();
+        updateDrugValues();
     }
     timeHour = convertTime(timeHour, gameHour); // Get formatted time
 
@@ -263,24 +516,3 @@ function convertTime(arg1, arg2) {
     return arg1;
 }
 
-// Do all the math at the end of each day
-function doDailyMath() {
-    locations.forEach(element => {
-        element.weed = Math.floor(Math.random() * (15 - 5) + 5);
-        element.cocaine = Math.floor(Math.random() * (100 - 60) + 60);
-        element.mdma = Math.floor(Math.random() * (130 - 80) + 80);
-        updateLocationData();
-    });
-}
-
-// gameOver() will change the right panel to show thier end game stats.
-function gameOver() {
-    // Contents go here.
-    clearInterval(endDay);
-    document.querySelector(".container").innerHTML = "<div class='gameOver'><h1>GAME OVER</h1><div class='endgameStats'></div><button class='restartGame'>RESTART</button></div>";
-    document.querySelector(".restartGame").addEventListener("click", function() {
-        location.reload();
-    });
-    
-    document.querySelector(".endgameStats").innerHTML = `<span>You finished the game with <strong>$${moneyOnHand}</strong></span><br>`;
-}

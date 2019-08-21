@@ -33,25 +33,45 @@
                 <div class="drugList">
                     <h2 class="drugTitle">DRUGS</h2>
                     <div class="drug weedStyles">
-                        <button class="buyWeed">BUY<br><span>$10</span></button>
-                        <span class="weedInv">Weed: 0</span>
-                        <button class="sellWeed">SELL<br><span>$10</span></button>
+                        <button class="buyWeed weedBuy" onclick="buy('weed')">BUY<br><span>$10</span></button>
+                        <span class="weedInv capitalize">Weed: 0</span>
+                        <button class="sellWeed weedSell" onclick="sell('weed')">SELL<br><span>$10</span></button>
                     </div>
                     <div class="drug cocaineStyles">
-                        <button class="buyCocaine">BUY<br><span>$10</span></button>
-                        <span class="cocaineInv">Cocaine: 0</span>
-                        <button class="sellCocaine">SELL<br><span>$10</span></button>
+                        <button class="buyCocaine cocaineBuy" onclick="buy('cocaine')">BUY<br><span>$10</span></button>
+                        <span class="cocaineInv capitalize">Cocaine: 0</span>
+                        <button class="sellCocaine cocaineSell" onclick="sell('cocaine')">SELL<br><span>$10</span></button>
                     </div>
                     <div class="drug mdmaStyles">
-                        <button class="buyMdma">BUY<br><span>$10</span></button>
-                        <span class="mdmaInv">MDMA: 0</span>
-                        <button class="sellMdma">SELL<br><span>$10</span></button>
+                        <button class="buyMdma mdmaBuy" onclick="buy('mdma')">BUY<br><span>$10</span></button>
+                        <span class="mdmaInv uppercase">MDMA: 0</span>
+                        <button class="sellMdma mdmaSell" onclick="sell('mdma')">SELL<br><span>$10</span></button>
+                    </div>
+                    <div class="drug lsdStyles">
+                        <button class="buyLsd lsdBuy" onclick="buy('lsd')">BUY<br><span>$10</span></button>
+                        <span class="lsdInv uppercase">LSD: 0</span>
+                        <button class="sellLsd lsdSell" onclick="sell('lsd')">SELL<br><span>$10</span></button>
+                    </div>
+                    <div class="drug heroinStyles">
+                        <button class="buyHeroin heroinBuy" onclick="buy('heroin')">BUY<br><span>$10</span></button>
+                        <span class="heroinInv capitalize">Heroin: 0</span>
+                        <button class="sellHeroin heroinSell" onclick="sell('heroin')">SELL<br><span>$10</span></button>
+                    </div>
+                    <div class="drug methStyles">
+                        <button class="buyMeth methBuy" onclick="buy('meth')">BUY<br><span>$10</span></button>
+                        <span class="methInv capitalize">Meth: 0</span>
+                        <button class="sellMeth methSell" onclick="sell('meth')">SELL<br><span>$10</span></button>
+                    </div>
+                    <div class="drug mushroomStyles">
+                        <button class="buyMushrooma mushroomBuy" onclick="buy('mushroom')">BUY<br><span>$10</span></button>
+                        <span class="mushroomInv capitalize">Shrooms: 0</span>
+                        <button class="sellMMushroom mushroomSell" onclick="sell('mushroom')">SELL<br><span>$10</span></button>
                     </div>
                 </div>
             </div>
             <div class="main">
-                <h2 class="locationTitle">LOCATION</h2>
-                <span class="locationName">Name:</span>
+                <!-- <h2 class="locationTitle">LOCATION</h2>
+                <span class="locationName">Name:</span> -->
                 <span class="endgameStats"></span>
                 <!-- <span class="locationPolice">Police: 30%</span> -->
                 <!-- <span class="locationNews">News: Police increase presence as -DRUG- sales spike</span> -->
@@ -62,14 +82,14 @@
             </div>
         </div>
         <div class="footer">
-            Version 1.0
+            
         </div>
     </div>
 
 
 
 
-
+    <!-- <script src="data.js"></script> -->
     <script src="my.js"></script>
 </body>
 </html>
