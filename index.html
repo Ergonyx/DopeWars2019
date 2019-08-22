@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58688591-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-58688591-3');
+</script> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,16 +18,6 @@
 </head>
 <body>
     <div class="wrapper">
-        <!-- Header for dropdown menu and quick stats -->
-        <!-- NOTES -->
-        <!-- Drugs:
-                Weed = Green
-                Cocaine = White
-                LSD = Yellow
-                MDMA = Pink
-                Mushrooms = Brown
-                Meth = Grey
-                Heroin = Beige -->
         <div class="header">
             <div>
                 <h2 class="moneyOnHand">Money: $100</h2>
@@ -29,61 +28,20 @@
         </div>
         <!-- Container has left menu to buy/sell drugs and travel between cities.  Right area will be a sort of map of the city showing the player where they are. -->
         <div class="container">
-            <div class="menu">
-                <div class="drugList">
-                    <h2 class="drugTitle">DRUGS</h2>
-                    <div class="drug weedStyles">
-                        <button class="buyWeed weedBuy" onclick="buy('weed')">BUY<br><span>$10</span></button>
-                        <span class="weedInv capitalize">Weed: 0</span>
-                        <button class="sellWeed weedSell" onclick="sell('weed')">SELL<br><span>$10</span></button>
-                    </div>
-                    <div class="drug cocaineStyles">
-                        <button class="buyCocaine cocaineBuy" onclick="buy('cocaine')">BUY<br><span>$10</span></button>
-                        <span class="cocaineInv capitalize">Cocaine: 0</span>
-                        <button class="sellCocaine cocaineSell" onclick="sell('cocaine')">SELL<br><span>$10</span></button>
-                    </div>
-                    <div class="drug mdmaStyles">
-                        <button class="buyMdma mdmaBuy" onclick="buy('mdma')">BUY<br><span>$10</span></button>
-                        <span class="mdmaInv uppercase">MDMA: 0</span>
-                        <button class="sellMdma mdmaSell" onclick="sell('mdma')">SELL<br><span>$10</span></button>
-                    </div>
-                    <div class="drug lsdStyles">
-                        <button class="buyLsd lsdBuy" onclick="buy('lsd')">BUY<br><span>$10</span></button>
-                        <span class="lsdInv uppercase">LSD: 0</span>
-                        <button class="sellLsd lsdSell" onclick="sell('lsd')">SELL<br><span>$10</span></button>
-                    </div>
-                    <div class="drug heroinStyles">
-                        <button class="buyHeroin heroinBuy" onclick="buy('heroin')">BUY<br><span>$10</span></button>
-                        <span class="heroinInv capitalize">Heroin: 0</span>
-                        <button class="sellHeroin heroinSell" onclick="sell('heroin')">SELL<br><span>$10</span></button>
-                    </div>
-                    <div class="drug methStyles">
-                        <button class="buyMeth methBuy" onclick="buy('meth')">BUY<br><span>$10</span></button>
-                        <span class="methInv capitalize">Meth: 0</span>
-                        <button class="sellMeth methSell" onclick="sell('meth')">SELL<br><span>$10</span></button>
-                    </div>
-                    <div class="drug mushroomStyles">
-                        <button class="buyMushrooma mushroomBuy" onclick="buy('mushroom')">BUY<br><span>$10</span></button>
-                        <span class="mushroomInv capitalize">Shrooms: 0</span>
-                        <button class="sellMMushroom mushroomSell" onclick="sell('mushroom')">SELL<br><span>$10</span></button>
-                    </div>
+            <div class="intro">
+                <p>This is my reimagining of the TI-83 calculator game, <a href="https://en.wikipedia.org/wiki/Drugwars" target="_new">Drug Wars</a>, and is still in a very early (but playable) state.</p>
+                <p>Your goal is simple; earn as much money as you can by buying and selling a variety of drugs between various cities.  The police are on strike for the next 30 days and the loan shark you borrowed your startup funds from is currently in custody, so you don't have to worry about them... yet.</p>
+                <p>Now.  Get out there and build an empire!</p>
+                <div class="menuButtons">
+                    
                 </div>
-            </div>
-            <div class="main">
-                <!-- <h2 class="locationTitle">LOCATION</h2>
-                <span class="locationName">Name:</span> -->
-                <span class="endgameStats"></span>
-                <!-- <span class="locationPolice">Police: 30%</span> -->
-                <!-- <span class="locationNews">News: Police increase presence as -DRUG- sales spike</span> -->
-                <div>
-                    <h2 class="travelTitle">TRAVEL</h2>
-                    <div class="travelButtons"></div>
-                </div>
-            </div>
+                <p><em>NOTES:<br>
+                - Each game day will take 5 real time minutes.<br></em></p>
+            </div> 
         </div>
-        <div class="footer">
-            
-        </div>
+            <div class="footer">
+                <p class="copyright">Copyright &copy; Alex Richardson 2019 (v0.02)</p>
+            </div>
     </div>
 
 
@@ -93,4 +51,55 @@
     <script src="my.js"></script>
 </body>
 </html>
-
+<!-- 
+<div class="menu">
+    <div class="drugList">
+        <h2 class="drugTitle">DRUGS</h2>
+        <div class="drug weedStyles">
+            <button class="buyWeed weedBuy" onclick="buy('weed')">BUY<br><span>$10</span></button>
+            <span class="weedInv capitalize">Weed: 0</span>
+            <button class="sellWeed weedSell" onclick="sell('weed')">SELL<br><span>$10</span></button>
+        </div>
+        <div class="drug cocaineStyles">
+            <button class="buyCocaine cocaineBuy" onclick="buy('cocaine')">BUY<br><span>$10</span></button>
+            <span class="cocaineInv capitalize">Cocaine: 0</span>
+            <button class="sellCocaine cocaineSell" onclick="sell('cocaine')">SELL<br><span>$10</span></button>
+        </div>
+        <div class="drug mdmaStyles">
+            <button class="buyMdma mdmaBuy" onclick="buy('mdma')">BUY<br><span>$10</span></button>
+            <span class="mdmaInv uppercase">MDMA: 0</span>
+            <button class="sellMdma mdmaSell" onclick="sell('mdma')">SELL<br><span>$10</span></button>
+        </div>
+        <div class="drug lsdStyles">
+            <button class="buyLsd lsdBuy" onclick="buy('lsd')">BUY<br><span>$10</span></button>
+            <span class="lsdInv uppercase">LSD: 0</span>
+            <button class="sellLsd lsdSell" onclick="sell('lsd')">SELL<br><span>$10</span></button>
+        </div>
+        <div class="drug heroinStyles">
+            <button class="buyHeroin heroinBuy" onclick="buy('heroin')">BUY<br><span>$10</span></button>
+            <span class="heroinInv capitalize">Heroin: 0</span>
+            <button class="sellHeroin heroinSell" onclick="sell('heroin')">SELL<br><span>$10</span></button>
+        </div>
+        <div class="drug methStyles">
+            <button class="buyMeth methBuy" onclick="buy('meth')">BUY<br><span>$10</span></button>
+            <span class="methInv capitalize">Meth: 0</span>
+            <button class="sellMeth methSell" onclick="sell('meth')">SELL<br><span>$10</span></button>
+        </div>
+        <div class="drug mushroomStyles">
+            <button class="buyMushrooma mushroomBuy" onclick="buy('mushroom')">BUY<br><span>$10</span></button>
+            <span class="mushroomInv capitalize">Shrooms: 0</span>
+            <button class="sellMMushroom mushroomSell" onclick="sell('mushroom')">SELL<br><span>$10</span></button>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <h2 class="locationTitle">LOCATION</h2>
+    <span class="locationName">Name:</span>
+    <span class="endgameStats"></span>
+    <span class="locationPolice">Police: 30%</span>
+    <span class="locationNews">News: Police increase presence as -DRUG- sales spike</span>
+    <div>
+        <h2 class="travelTitle">TRAVEL</h2>
+        <div class="travelButtons"></div>
+    </div>
+</div> -->

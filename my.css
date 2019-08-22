@@ -30,6 +30,10 @@ body {
           align-items: center;
 }
 
+.intro {
+  padding: 0.5rem;
+}
+
 .restartGame {
   margin: 0.25rem;
   height: 2.5rem;
@@ -87,7 +91,7 @@ body {
 }
 
 .drug:last-child {
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
 }
 
 .drugTitle {
@@ -133,7 +137,7 @@ body {
 .main {
   border-left: 1px solid #777;
   width: 50%;
-  padding: .25rem;
+  padding: 0.25rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -157,6 +161,47 @@ body {
   height: 2.5rem;
   font-size: 1.5rem;
   background: #cee;
+}
+
+.menuButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.startNewGame,
+.loadGame {
+  margin: 2px;
+  padding: 0;
+  width: 70%;
+  height: 2.5rem;
+  /* border: 1px solid blue; */
+  border: 0;
+  background: lightblue;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.copyright {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
 }
 
 @media (min-width: 550px) {
