@@ -306,13 +306,11 @@ let gameData = {
         day : 0
     }
 };
+
 let gameMinute = 0;
 let gameHour = 0;
 let gameDay = 1;
-// SaveData = () => {
-//     const saveData = JSON.stringify(gameData);
-//     localStorage.setItem("savegame", saveData);
-// }
+
 function saveData() {
     const saveData = JSON.stringify(gameData);
     localStorage.setItem("savegame", saveData);
@@ -320,18 +318,6 @@ function saveData() {
     localStorage.setItem("gameHour", gameHour);
     localStorage.setItem("gameDay", gameDay);
 }
-
-// LoadData = () => {
-//     const newData = localStorage.getItem("savegame");
-//     if (newData) { 
-//         gameData = JSON.parse(newData);
-//     } else {
-//         let gameMinute = 0;
-//         let gameHour = 0;
-//         let gameDay = 1;
-//     }
-// }
-
 function loadData() {
     const newData = localStorage.getItem("savegame");
     if (newData) {
@@ -355,30 +341,141 @@ function loadData() {
     }
     endDay = setInterval(increaseTime, 208); // OPTIONAL: 5 minute days.
 }
+
 // loadData();
 document.querySelector(".moneyOnHand").textContent = `Welcome To`;
 document.querySelector(".timeDisplay").textContent = `DOPE WARS 2019!`;
 
-function createMenuButtons() {
+function createMenuButtons(arg1) {
     const newData = localStorage.getItem("savegame");
     if (newData) {
-        document.querySelector(".menuButtons").innerHTML = `<button class="startNewGame" onclick="startNewGame()">NEW GAME</button><button class="loadGame" onclick="loadData()">LOAD GAME</button>`
+        document.querySelector(".menuButtons").innerHTML = `<button class="startNewGame" onclick="${arg1}()">NEW GAME</button><button class="loadGame" onclick="loadData()">LOAD GAME</button>`
     } else {
-        document.querySelector(".menuButtons").innerHTML = `<button class="startNewGame" onclick="startNewGame()">NEW GAME</button><button class="loadGame" onclick="loadData()" disabled="true">LOAD GAME</button>`
+        document.querySelector(".menuButtons").innerHTML = `<button class="startNewGame" onclick="${arg1}()">NEW GAME</button><button class="loadGame" onclick="loadData()" disabled="true">LOAD GAME</button>`
     }
 }
-createMenuButtons();
-
-function startNewGame() {
+createMenuButtons("newGameMenu");
+function newGameMenu() {
+    const newData = localStorage.getItem("savegame");
+    if (newData) {
+        document.querySelector(".container").innerHTML = `
+            <div class="warning">
+                <h1>!!! WARNING !!!</h1>
+                <p>Save data found!</p>
+                <p>If you continue, existing data will be overwritten!</p>
+                <div class="menuButtons"></div>
+            </div>
+        `
+        createMenuButtons("startNewGame");
+    } else { 
+        document.querySelector(".container").innerHTML = `
+            <div class="newGameMenu">
+                <h1>NEW GAME</h1>
+                <button class="easy blueButtons" onclick="setDifficulty('easy')">EASY ($2500 start)</button>
+                <button class="normal blueButtons" onclick="setDifficulty('normal')">NORMAL ($1000 start)</button>
+                <button class="hard blueButtons" onclick="setDifficulty('hard')">HARD ($100) start</button>
+            </div>
+        `
+        // loadData();
+    }
+}
+function startNewGame(arg1) {
     // const newData = localStorage.getItem("savegame");
     // if (newData) {
     //     console.log("There is already a game in progress.  Are you sure you wish to start a new game?");
     // } else {
+        // newGameMenu();
         localStorage.removeItem("savegame");
-        loadData();
+        newGameMenu();
+        // loadData();
     // }
 }
-
+function setDifficulty(arg1) {
+    switch (arg1) {
+        case "easy":
+            loadData();
+            gameData.playerData.playerInventory.moneyOnHand = 2500;
+            document.querySelector(".moneyOnHand").textContent = `Money: $${gameData.playerData.playerInventory.moneyOnHand}`;
+            break;
+        case "normal":
+            loadData();
+            gameData.playerData.playerInventory.moneyOnHand = 1000;
+            document.querySelector(".moneyOnHand").textContent = `Money: $${gameData.playerData.playerInventory.moneyOnHand}`;
+            break;
+        case "hard":
+            loadData();
+            gameData.playerData.playerInventory.moneyOnHand = 100;
+            document.querySelector(".moneyOnHand").textContent = `Money: $${gameData.playerData.playerInventory.moneyOnHand}`;
+            break;
+    }
+}
+function createInterface() {
+    document.querySelector(".pauseButton").classList.remove("hidden");
+    document.querySelector(".container").innerHTML = `
+    <div class="menu">
+        <div class="drugList">
+            <h2 class="drugTitle">DRUGS</h2>
+            <div class="drug weedStyles">
+                <button class="weedBuy" onclick="buy('weed')">BUY<br><span>$10</span></button>
+                <span class="weedInv capitalize">Weed: 0</span>
+                <button class="weedSell" onclick="sell('weed')">SELL<br><span>$10</span></button>
+            </div>
+            <div class="drug cocaineStyles">
+                <button class="cocaineBuy" onclick="buy('cocaine')">BUY<br><span>$10</span></button>
+                <span class="cocaineInv capitalize">Cocaine: 0</span>
+                <button class="cocaineSell" onclick="sell('cocaine')">SELL<br><span>$10</span></button>
+            </div>
+            <div class="drug mdmaStyles">
+                <button class="mdmaBuy" onclick="buy('mdma')">BUY<br><span>$10</span></button>
+                <span class="mdmaInv uppercase">MDMA: 0</span>
+                <button class="mdmaSell" onclick="sell('mdma')">SELL<br><span>$10</span></button>
+            </div>
+            <div class="drug lsdStyles">
+                <button class="lsdBuy" onclick="buy('lsd')">BUY<br><span>$10</span></button>
+                <span class="lsdInv uppercase">LSD: 0</span>
+                <button class="lsdSell" onclick="sell('lsd')">SELL<br><span>$10</span></button>
+            </div>
+            <div class="drug heroinStyles">
+                <button class="heroinBuy" onclick="buy('heroin')">BUY<br><span>$10</span></button>
+                <span class="heroinInv capitalize">Heroin: 0</span>
+                <button class="heroinSell" onclick="sell('heroin')">SELL<br><span>$10</span></button>
+            </div>
+            <div class="drug methStyles">
+                <button class="methBuy" onclick="buy('meth')">BUY<br><span>$10</span></button>
+                <span class="methInv capitalize">Meth: 0</span>
+                <button class="methSell" onclick="sell('meth')">SELL<br><span>$10</span></button>
+            </div>
+            <div class="drug shroomStyles">
+                <button class="shroomBuy" onclick="buy('shroom')">BUY<br><span>$10</span></button>
+                <span class="shroomInv capitalize">Shrooms: 0</span>
+                <button class="shroomSell" onclick="sell('shroom')">SELL<br><span>$10</span></button>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+            <!-- <h2 class="locationTitle">LOCATION</h2>
+            <span class="locationName">Name:</span> -->
+            <span class="endgameStats"></span>
+            <!-- <span class="locationPolice">Police: 30%</span> -->
+            <!-- <span class="locationNews">News: Police increase presence as -DRUG- sales spike</span> -->
+            <div>
+                <h2 class="travelTitle">TRAVEL</h2>
+                <div class="travelButtons"></div>
+            </div>
+        </div>
+    </div>`;
+    document.querySelector(".timeDisplay").textContent = `Day: 1 Time: 00:00`;
+}
+function setStartingLocation() {
+    startingLocation = Math.floor(Math.random() * (7 - 0) + 0);
+    arg1 = gameData.locationData2;
+    arg1.forEach(element => {
+        if (element.id === startingLocation) {
+            gameData.playerData.playerLocation = element.id;
+        }
+    });
+    updateDrugValues();
+}
 // Start time rolling.  One second = one minute in game.  One game day is 24 minutes.
 // endDay = setInterval(increaseTime, 1000); // DEFAULT: 24 minute days.
 // endDay = setInterval(increaseTime, 104); // OPTIONAL: 2.5 minute days.
@@ -398,19 +495,6 @@ function changeDrugValues() {
         element.drugValues.shroomValue = Math.floor(Math.random() * (101 - 20) + 20);
     });
 }
-
-// If no save data is present, set players starting location on page load.
-function setStartingLocation() {
-    startingLocation = Math.floor(Math.random() * (7 - 0) + 0);
-    arg1 = gameData.locationData2;
-    arg1.forEach(element => {
-        if (element.id === startingLocation) {
-            gameData.playerData.playerLocation = element.id;
-        }
-    });
-    updateDrugValues();
-}
-
 // Create and/or update travel menu as needed.
 function makeTravelMenu() {
     playerLocation = gameData.playerData.playerLocation;
@@ -432,11 +516,11 @@ function makeTravelMenu() {
         });
     });
 }
-
 function buy(arg1) {
     drugPrice = gameData.locationData2[gameData.playerData.playerLocation].drugValues[`${arg1}Value`];
     drugOnHand = gameData.playerData.playerInventory[`${arg1}Count`];
-    moneyOnHand = gameData.playerData.playerInventory.moneyOnHand
+    moneyOnHand = gameData.playerData.playerInventory.moneyOnHand;
+    timeSkip(1,16);
     if (drugPrice <= moneyOnHand) {
         gameData.playerData.playerInventory.moneyOnHand -= drugPrice;
         gameData.playerData.playerInventory[`${arg1}Count`] += 1;
@@ -444,10 +528,10 @@ function buy(arg1) {
         document.querySelector(".moneyOnHand").textContent = `Money: $${gameData.playerData.playerInventory.moneyOnHand}`
     }
 }
-
 function sell(arg1) {
     drugPrice = gameData.locationData2[gameData.playerData.playerLocation].drugValues[`${arg1}Value`];
     drugOnHand = gameData.playerData.playerInventory[`${arg1}Count`];
+    timeSkip(1,16);
     if (drugOnHand > 0) {
         gameData.playerData.playerInventory.moneyOnHand += drugPrice;
         gameData.playerData.playerInventory[`${arg1}Count`] -= 1;
@@ -455,15 +539,25 @@ function sell(arg1) {
         document.querySelector(".moneyOnHand").textContent = `Money: $${gameData.playerData.playerInventory.moneyOnHand}`
     }
 }
-
+function timeSkip(min, max) {
+    value = Math.floor(Math.random() * (max - min) + min);
+    if (value >= 60) {
+        hoursChange = Math.floor(value / 60);
+        minuteChange = value - ((Math.floor(value / 60) * 60));
+        gameHour += hoursChange;
+        gameMinute += minuteChange;
+    } else {
+        gameMinute += value;
+    }
+}
 function travelToLocation(arg1) {
     gameData.playerData.playerLocation = arg1;
     makeTravelMenu();
     bookmark = gameData.locationData2[arg1].drugValues;
     // document.querySelector(".locationName").innerHTML = `<strong>Name: </strong>${gameData.locationData2[arg1].locationName}`;
     updateDrugValues();
+    timeSkip(120,240);
 }
-
 function updateDrugValues() {
     bookmark = gameData.locationData2[gameData.playerData.playerLocation].drugValues;
     document.querySelector(".weedBuy").innerHTML = `BUY<br><span>$${bookmark.weedValue}</span>`;
@@ -481,7 +575,6 @@ function updateDrugValues() {
     document.querySelector(".shroomBuy").innerHTML = `BUY<br><span>$${bookmark.shroomValue}</span>`;
     document.querySelector(".shroomSell").innerHTML = `SELL<br><span>$${bookmark.shroomValue}</span>`;
 }
-
 function updateDrugInventory() {
     bookmark = gameData.playerData.playerInventory;
     document.querySelector(".weedInv").textContent = `Weed: ${bookmark.weedCount}`
@@ -492,7 +585,6 @@ function updateDrugInventory() {
     document.querySelector(".methInv").textContent = `meth: ${bookmark.methCount}`
     document.querySelector(".shroomInv").textContent = `shroom: ${bookmark.shroomCount}`
 }
-
 function increaseTime() {
     if (gameData.gamePaused === false) {
         timeMinute = 0;
@@ -525,7 +617,6 @@ function increaseTime() {
         // console.log(Math.floor(Math.random() * (10 - 0) + 0));
     }
 }
-
 // This just puts a zero in front of the single digits in the time, nothing more.
 function convertTime(arg1, arg2) {
     arg1 = arg2.toString();
@@ -534,27 +625,28 @@ function convertTime(arg1, arg2) {
     }
     return arg1;
 }
-
 // gameOver() will change the right panel to show thier end game stats.
 function gameOver() {
     // Contents go here.
     clearInterval(endDay);
+    document.querySelector(".pauseButton").classList.add("hidden");
     moneyOnHand = gameData.playerData.playerInventory.moneyOnHand;
     document.querySelector(".container").innerHTML = `
     <div class='gameOver'>
-        <h1>GAME OVER</h1>
+        <h1>!!! GAME OVER !!!</h1>
         <div class='endgameStats'>
         </div>
-        <button class='restartGame'>RESTART</button>
+        <button class='restartGame blueButtons'>RESTART</button>
+        <p class="msgFromDev">You may not know this, but the developer of this little game is homeless, and they could really use your help.  First, sharing this game with people you think would enjoy it, is the most helpful.  It may end up in the hands of someone looking to <a href="http://www.alexrichardson.ca" target="_new">hire a passionate developer</a>.  Second, if you feel you got some level of entertainment out of this, I am open to <a href="http://www.paypal.me/Ergonyx" target="_new">monetary rewards</a> for my efforts.  I mean, I'm fueled by caffiene and carbs after all!  Third, and lastly, feedback.  Feedback about the game, the code, or anything you feel can be improved is greatly appreciated.</p>
+        <h2>Thank you for playing and have a good day!</h2>
     </div>`;
     document.querySelector(".restartGame").addEventListener("click", function() {
         localStorage.removeItem("savegame");
         location.reload();
     });
     
-    document.querySelector(".endgameStats").innerHTML = `<span>You finished the game with <strong>$${moneyOnHand}</strong></span><br>`;
+    document.querySelector(".endgameStats").innerHTML = `<p>You finished the game with <strong>$${moneyOnHand}</strong></p>`;
 }
-
 function pauseGame() {
     if (gameData.gamePaused === true) {
         gameData.gamePaused = false;
@@ -563,60 +655,4 @@ function pauseGame() {
         gameData.gamePaused = true;
         clearInterval(endDay);
     }
-}
-
-function createInterface() {
-    document.querySelector(".container").innerHTML = `<div class="menu">
-    <div class="drugList">
-        <h2 class="drugTitle">DRUGS</h2>
-        <div class="drug weedStyles">
-            <button class="weedBuy" onclick="buy('weed')">BUY<br><span>$10</span></button>
-            <span class="weedInv capitalize">Weed: 0</span>
-            <button class="weedSell" onclick="sell('weed')">SELL<br><span>$10</span></button>
-        </div>
-        <div class="drug cocaineStyles">
-            <button class="cocaineBuy" onclick="buy('cocaine')">BUY<br><span>$10</span></button>
-            <span class="cocaineInv capitalize">Cocaine: 0</span>
-            <button class="cocaineSell" onclick="sell('cocaine')">SELL<br><span>$10</span></button>
-        </div>
-        <div class="drug mdmaStyles">
-            <button class="mdmaBuy" onclick="buy('mdma')">BUY<br><span>$10</span></button>
-            <span class="mdmaInv uppercase">MDMA: 0</span>
-            <button class="mdmaSell" onclick="sell('mdma')">SELL<br><span>$10</span></button>
-        </div>
-        <div class="drug lsdStyles">
-            <button class="lsdBuy" onclick="buy('lsd')">BUY<br><span>$10</span></button>
-            <span class="lsdInv uppercase">LSD: 0</span>
-            <button class="lsdSell" onclick="sell('lsd')">SELL<br><span>$10</span></button>
-        </div>
-        <div class="drug heroinStyles">
-            <button class="heroinBuy" onclick="buy('heroin')">BUY<br><span>$10</span></button>
-            <span class="heroinInv capitalize">Heroin: 0</span>
-            <button class="heroinSell" onclick="sell('heroin')">SELL<br><span>$10</span></button>
-        </div>
-        <div class="drug methStyles">
-            <button class="methBuy" onclick="buy('meth')">BUY<br><span>$10</span></button>
-            <span class="methInv capitalize">Meth: 0</span>
-            <button class="methSell" onclick="sell('meth')">SELL<br><span>$10</span></button>
-        </div>
-        <div class="drug shroomStyles">
-            <button class="shroomBuy" onclick="buy('shroom')">BUY<br><span>$10</span></button>
-            <span class="shroomInv capitalize">Shrooms: 0</span>
-            <button class="shroomSell" onclick="sell('shroom')">SELL<br><span>$10</span></button>
-        </div>
-    </div>
-    </div>
-    <div class="main">
-            <!-- <h2 class="locationTitle">LOCATION</h2>
-            <span class="locationName">Name:</span> -->
-            <span class="endgameStats"></span>
-            <!-- <span class="locationPolice">Police: 30%</span> -->
-            <!-- <span class="locationNews">News: Police increase presence as -DRUG- sales spike</span> -->
-            <div>
-                <h2 class="travelTitle">TRAVEL</h2>
-                <div class="travelButtons"></div>
-            </div>
-        </div>
-    </div>`;
-    document.querySelector(".timeDisplay").textContent = `Day: 1 Time: 00:00`;
 }
