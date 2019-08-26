@@ -1,10 +1,21 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
 }
 
 .header {
   border: 1px solid #777;
-  text-align: center;
+  padding: .5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .container {
@@ -122,7 +133,7 @@ body {
   background: #c8c8c8;
 }
 
-.mushroomStyles {
+.shroomStyles {
   background: rgba(180, 148, 99, 0.76);
 }
 
