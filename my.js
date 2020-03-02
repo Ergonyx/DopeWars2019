@@ -318,6 +318,7 @@ function saveData() {
     localStorage.setItem("gameHour", gameHour);
     localStorage.setItem("gameDay", gameDay);
 }
+
 function loadData() {
     const newData = localStorage.getItem("savegame");
     if (newData) {
@@ -637,7 +638,6 @@ function gameOver() {
         <div class='endgameStats'>
         </div>
         <button class='restartGame blueButtons'>RESTART</button>
-        <p class="msgFromDev">You may not know this, but the developer of this little game is homeless, and they could really use your help.  First, sharing this game with people you think would enjoy it, is the most helpful.  It may end up in the hands of someone looking to <a href="http://www.alexrichardson.ca" target="_new">hire a passionate developer</a>.  Second, if you feel you got some level of entertainment out of this, I am open to <a href="http://www.paypal.me/Ergonyx" target="_new">monetary rewards</a> for my efforts.  I mean, I'm fueled by caffiene and carbs after all!  Third, and lastly, feedback.  Feedback about the game, the code, or anything you feel can be improved is greatly appreciated.</p>
         <h2>Thank you for playing and have a good day!</h2>
     </div>`;
     document.querySelector(".restartGame").addEventListener("click", function() {
